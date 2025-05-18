@@ -167,9 +167,9 @@ export default function FeedPage() {
               </Button>
             </SheetTrigger>
             <SheetContent>
-              <SheetHeader>
+              {/* <SheetHeader>
                 <SheetTitle>Create New Post</SheetTitle>
-              </SheetHeader>
+              </SheetHeader> */}
               {/* Add post creation form here */}
             </SheetContent>
           </Sheet>
