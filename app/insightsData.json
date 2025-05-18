@@ -1,0 +1,31 @@
+{
+    "username": "maymary",
+    "insights": [
+      {
+        "topic": "Content Themes",
+        "insight": "Your posts featuring '#coding', '#art', and '#photography' gain the highest engagement, highlighting your audience's strong interest in these topics.",
+        "best_keywords": ["#coding", "#art", "#photography"]
+      },
+      {
+        "topic": "Post Type Performance",
+        "insight": "Image posts generally perform better, with the highest impressions and engagement compared to other formats.",
+        "best_keywords": ["image", "engagement", "impressions"]
+      },
+      {
+        "topic": "User Demographics",
+        "insight": "Being a 23-year-old from Korea using a tablet makes you relatable to tech-savvy and creative Gen Z audiences.",
+        "best_keywords": ["Gen Z", "tablet", "Korea"]
+      },
+      {
+        "topic": "Engagement Patterns",
+        "insight": "Your posts tend to get maximum engagement on days close to holidays or year-end, indicating audience activity spikes during festive periods.",
+        "best_keywords": ["engagement", "holidays", "festive"]
+      },
+      {
+        "topic": "Community Interaction",
+        "insight": "Frequent interactions from users like 'katiewaters' and 'jjones' suggest a core group of followers contributing to your engagement.",
+        "best_keywords": ["community", "followers", "engagement"]
+      }
+    ]
+  }
+  
