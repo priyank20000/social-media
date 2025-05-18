@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -13,7 +14,12 @@ interface Interest {
   name: string;
 }
 
-export function ProfileEditor() {
+// Define the props interface with onClose
+interface ProfileEditorProps {
+  onClose: () => void;
+}
+
+export function ProfileEditor({ onClose }: ProfileEditorProps) {
   const [avatar, setAvatar] = useState("/images/user/sara.jpeg");
   const [name, setName] = useState("Sarah Smith");
   const [bio, setBio] = useState("Social media analytics enthusiast | Data-driven marketer");
@@ -22,7 +28,7 @@ export function ProfileEditor() {
     { id: "1", name: "Analytics" },
     { id: "2", name: "Social Media" },
     { id: "3", name: "Marketing" },
-    { id: "4", name: "Data Science" }
+    { id: "4", name: "Data Science" },
   ]);
 
   const handleAvatarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,14 +46,14 @@ export function ProfileEditor() {
     if (e.key === "Enter" && newInterest.trim()) {
       setInterests([
         ...interests,
-        { id: Date.now().toString(), name: newInterest.trim() }
+        { id: Date.now().toString(), name: newInterest.trim() },
       ]);
       setNewInterest("");
     }
   };
 
   const handleRemoveInterest = (id: string) => {
-    setInterests(interests.filter(interest => interest.id !== id));
+    setInterests(interests.filter((interest) => interest.id !== id));
   };
 
   return (
@@ -102,7 +108,7 @@ export function ProfileEditor() {
             <label className="text-sm font-medium">Interests</label>
             <div className="mt-2 space-y-4">
               <div className="flex flex-wrap gap-2">
-                {interests.map(interest => (
+                {interests.map((interest) => (
                   <Badge
                     key={interest.id}
                     variant="secondary"
@@ -130,7 +136,9 @@ export function ProfileEditor() {
         </div>
 
         <div className="flex justify-end gap-4">
-          <Button variant="outline">Cancel</Button>
+          <Button variant="outline" onClick={onClose}>
+            Cancel
+          </Button>
           <Button>Save Changes</Button>
         </div>
       </div>

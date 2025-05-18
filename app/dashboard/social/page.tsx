@@ -12,17 +12,20 @@ import { QABoard } from "@/components/social/QABoard";
 import { ProfileEditor } from "@/components/social/ProfileEditor";
 import { PostFeed } from "@/components/social/PostFeed";
 
-// Main component for the Social Features page
 export default function SocialPage() {
+  // State to manage the active tab (optional, for controlling tab navigation)
+  const [activeTab, setActiveTab] = useState("events");
+
+  // Handler for closing the ProfileEditor (e.g., switch back to another tab)
+  const handleProfileEditorClose = () => {
+    setActiveTab("feed"); // Switch to another tab, e.g., "Feed"
+  };
+
   return (
-    // Main container with padding
     <div className="p-8">
-      {/* Page title */}
       <h1 className="text-2xl font-bold mb-8">Social Features</h1>
       
-      {/* Tabs component to switch between different social features */}
-      <Tabs defaultValue="events" className="space-y-8">
-        {/* Tabs navigation list */}
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
         <TabsList className="grid grid-cols-4 sm:grid-cols-7 gap-2">
           <TabsTrigger value="events">Events</TabsTrigger>
           <TabsTrigger value="polls">Polls</TabsTrigger>
@@ -33,9 +36,7 @@ export default function SocialPage() {
           <TabsTrigger value="profile">Profile</TabsTrigger>
         </TabsList>
 
-        {/* Content for Events tab */}
         <TabsContent value="events" className="space-y-8">
-          {/* RSVP Card component for event details */}
           <RSVPCard
             title="Analytics Workshop 2024"
             date="April 15, 2024"
@@ -45,40 +46,28 @@ export default function SocialPage() {
           />
         </TabsContent>
 
-        {/* Content for Polls tab */}
         <TabsContent value="polls">
-          {/* Component for creating and managing polls */}
           <PollCreator />
         </TabsContent>
 
-        {/* Content for Forum tab */}
         <TabsContent value="forum">
-          {/* Component for forum discussions */}
           <ForumThread />
         </TabsContent>
 
-        {/* Content for Chat tab */}
         <TabsContent value="chat">
-          {/* Component for group chat functionality */}
           <GroupChat />
         </TabsContent>
 
-        {/* Content for Q&A tab */}
         <TabsContent value="qa">
-          {/* Component for question and answer board */}
           <QABoard />
         </TabsContent>
 
-        {/* Content for Feed tab */}
         <TabsContent value="feed">
-          {/* Component for social media style post feed */}
           <PostFeed />
         </TabsContent>
 
-        {/* Content for Profile tab */}
         <TabsContent value="profile">
-          {/* Component for editing user profile */}
-          <ProfileEditor />
+          <ProfileEditor onClose={handleProfileEditorClose} />
         </TabsContent>
       </Tabs>
     </div>

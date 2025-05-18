@@ -1,7 +1,7 @@
 "use client";
 
 // Import necessary dependencies
-import { useState } from "react";
+import { useState, useEffect } from "react"; // Added useEffect for client-side window access
 import { mockGifsPosts, mockUsers } from "@/lib/mock-data"; // Mock data for GIF posts and users
 import { Heart, MessageCircle, Share2, Plus, Image as ImageIcon } from "lucide-react"; // Icons for UI
 import Masonry from "react-masonry-css"; // Library for masonry grid layout
@@ -18,7 +18,6 @@ import { CardDescription } from "@/components/ui/card"; // Shadcn/UI CardDescrip
 import { Button } from "@/components/ui/button"; // Shadcn/UI Button component
 import { CommentSection } from "@/components/comments/CommentSection"; // Custom component for comments
 import { ShareMenu } from "@/components/social/ShareMenu"; // Custom component for sharing
-import { useIsMobile } from "@/hooks/use-mobile"; // Custom hook to detect mobile devices (unused)
 
 export default function GifsPage() {
   // Initialize state with filtered and enriched GIF post data
@@ -32,6 +31,14 @@ export default function GifsPage() {
       }))
       .sort((a, b) => b.likes - a.likes) // Sort by likes (descending)
   );
+
+  // State to store the origin (base URL) for client-side URL construction
+  const [origin, setOrigin] = useState("");
+
+  // Set origin only on client-side to avoid window access during SSR
+  useEffect(() => {
+    setOrigin(window.location.origin);
+  }, []);
 
   // Reference to file input for GIF uploads
   const [fileInputRef, setFileInputRef] = useState<HTMLInputElement | null>(null);
@@ -173,12 +180,15 @@ export default function GifsPage() {
                         <MessageCircle className="w-4 h-4 mr-1" />
                         <span>{post.comments.toLocaleString()}</span>
                       </Button>
-                      <ShareMenu
-                        url={`${window.location.origin}/gif/${post.id}`}
-                        title={post.caption}
-                        shares={post.shares}
-                        onShare={() => handleShare(post.id)}
-                      />
+                      {/* Use dynamic origin for ShareMenu URL */}
+                      {origin && (
+                        <ShareMenu
+                          url={`${origin}/gif/${post.id}`}
+                          title={post.caption}
+                          shares={post.shares}
+                          onShare={() => handleShare(post.id)}
+                        />
+                      )}
                     </div>
                   </div>
                 </SheetTrigger>
