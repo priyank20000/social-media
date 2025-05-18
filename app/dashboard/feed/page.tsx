@@ -159,7 +159,7 @@ export default function FeedPage() {
               Polls
             </Button>
           </div>
-          <Sheet>
+          {/* <Sheet>
             <SheetTrigger asChild>
               <Button>
                 <Plus className="h-4 w-4 mr-2" />
@@ -167,12 +167,11 @@ export default function FeedPage() {
               </Button>
             </SheetTrigger>
             <SheetContent>
-              {/* <SheetHeader>
+              <SheetHeader>
                 <SheetTitle>Create New Post</SheetTitle>
-              </SheetHeader> */}
-              {/* Add post creation form here */}
+              </SheetHeader>
             </SheetContent>
-          </Sheet>
+          </Sheet> */}
         </div>
       </div>
 
