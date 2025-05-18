@@ -64,12 +64,6 @@ A heartfelt thank you to the CodeCircuit.ai Hackathon organizers and mentors who
 - Our mentors for their invaluable guidance and support
 - Fellow participants for their feedback and encouragement
 
-## 👥 Team
-
-- [Your Name] - Full Stack Developer
-- [Team Member 2] - UI/UX Designer
-- [Team Member 3] - Backend Developer
-- [Team Member 4] - Data Analyst
 
 ## 📄 License
 
